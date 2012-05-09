@@ -19,6 +19,7 @@ module Yapv
     end
 
     def gender
+      return unless valid?
       value[-2].to_i % 2 == 0 ? :female : :male
     end
 
@@ -31,6 +32,7 @@ module Yapv
     end
 
     def birth_date
+      return unless valid?
       case value[2].to_i
       when 0..1
         century = "19"

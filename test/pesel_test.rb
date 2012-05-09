@@ -38,15 +38,26 @@ class PeselTest < MiniTest::Unit::TestCase
     end
   end
 
+  def test_birth_date_returns_nil_if_pesel_is_incorrect
+    ["74082610618", "02221407513"].each do |pesel|
+      @pesel = Yapv::Pesel.new(pesel)
+      assert_equal nil, @pesel.birth_date
+    end
+  end
+
   def test_gender_method_returns_male_for_male_pesel
-    @pesel = Yapv::Pesel.new("74082610618")
+    @pesel = Yapv::Pesel.new("74021834018")
     assert @pesel.male?
     assert @pesel.gender == :male
   end
 
   def test_gender_method_returns_female_for_female_pesel
-    @pesel = Yapv::Pesel.new("74082610608")
+    @pesel = Yapv::Pesel.new("02221407563")
     assert @pesel.female?
     assert @pesel.gender == :female
+  end
+  def test_gender_returns_nil_if_pesel_is_incorrect
+    @pesel = Yapv::Pesel.new("74082610618")
+    assert_equal nil, @pesel.gender
   end
 end
