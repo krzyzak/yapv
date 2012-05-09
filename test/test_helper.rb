@@ -1,0 +1,6 @@
+require "minitest/unit"
+require "minitest/autorun"
+require "active_model"
+require "active_model/validations"
+require "yapv"
+require "yapv/pesel"
