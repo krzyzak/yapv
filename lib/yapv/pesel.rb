@@ -23,6 +23,11 @@ module Yapv
       value[-2].to_i % 2 == 0 ? :female : :male
     end
 
+    def gender!
+      raise ArgumentError.new("PESEL is invalid") unless gender
+      gender
+    end
+
     def male?
       raise ArgumentError.new("PESEL is invalid") unless valid?
       gender == :male
@@ -56,6 +61,11 @@ module Yapv
       year, month, day = value[0,6].scan(/\d\d/)
       month = month.to_i - offset
       Date.parse("#{century}#{year}-#{month}-#{day}")
+    end
+
+    def birth_date!
+      raise ArgumentError.new("PESEL is invalid") unless birth_date
+      birth_date
     end
   end
 end
