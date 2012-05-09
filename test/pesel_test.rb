@@ -56,8 +56,21 @@ class PeselTest < MiniTest::Unit::TestCase
     assert @pesel.female?
     assert @pesel.gender == :female
   end
+
+
   def test_gender_returns_nil_if_pesel_is_incorrect
     @pesel = Yapv::Pesel.new("74082610618")
     assert_equal nil, @pesel.gender
+  end
+
+  def test_male_and_female_inquirer_raises_error_if_pesel_is_incorrect
+    @pesel = Yapv::Pesel.new("74082610618")
+    assert_raises ArgumentError, "male? method should raise ArgumentError" do
+      @pesel.male?
+    end
+
+    assert_raises ArgumentError, "female? method should raise ArgumentError" do
+      @pesel.female?
+    end
   end
 end

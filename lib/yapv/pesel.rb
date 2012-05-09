@@ -24,10 +24,12 @@ module Yapv
     end
 
     def male?
+      raise ArgumentError.new("PESEL is invalid") unless valid?
       gender == :male
     end
 
     def female?
+      raise ArgumentError.new("PESEL is invalid") unless valid?
       gender == :female
     end
 
