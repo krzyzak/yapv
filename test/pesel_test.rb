@@ -1,6 +1,11 @@
 require "test_helper"
 require "date"
 class PeselTest < MiniTest::Unit::TestCase
+  def test_input_is_automatically_changed_to_string
+    @pesel = Yapv::Pesel.new(12345678901)
+    assert_equal "12345678901", @pesel.value
+  end
+
   def test_pesel_shorter_than_11_digits_is_invalid
     @pesel = Yapv::Pesel.new("1" * 10)
     assert !@pesel.valid?

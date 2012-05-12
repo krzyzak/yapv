@@ -10,6 +10,10 @@ module Yapv
       self.value = value
     end
 
+    def value=(input)
+      @value = input.to_s
+    end
+
     def pesel_format
       mask = [1, 3, 7, 9, 1, 3, 7, 9, 1, 3]
       val = value.split("").map(&:to_i)
