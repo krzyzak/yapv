@@ -29,7 +29,7 @@ class PeselTest < MiniTest::Unit::TestCase
   end
 
   def test_correct_pesel_is_valid
-    ["74021834018", "02221407563"].each do |pesel|
+    ["74021834018", "02221407563", "20241110410"].each do |pesel|
       @pesel = Yapv::Pesel.new(pesel)
       assert @pesel.valid?, "Pesel #{pesel} should be valid"
     end

@@ -19,7 +19,11 @@ module Yapv
       val = value.split("").map(&:to_i)
 
       modulo = mask.inject(0){|sum, num| sum + (num * val.shift)} % 10
-      errors.add(:value) unless 10 - modulo == val.shift
+      if modulo == 0
+        errors.add(:value) unless val.shift == 0
+      else
+        errors.add(:value) unless 10 - modulo == val.shift
+      end
     end
 
     def gender
