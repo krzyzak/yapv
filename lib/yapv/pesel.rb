@@ -18,6 +18,7 @@ module Yapv
       mask = [1, 3, 7, 9, 1, 3, 7, 9, 1, 3]
       val = value.split("").map(&:to_i)
 
+      return errors.add(:value) unless val.size == 11
       modulo = mask.inject(0){|sum, num| sum + (num * val.shift)} % 10
       if modulo == 0
         errors.add(:value) unless val.shift == 0
